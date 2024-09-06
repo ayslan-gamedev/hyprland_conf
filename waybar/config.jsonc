@@ -1,0 +1,69 @@
+{
+  "height": 20,
+  "spacing": 2,
+  "modules-left": [
+    // se https://github.com/Alexays/Waybar/wiki/Module:-Hyprland#workspaces
+    "hyprland/workspaces",
+    "sway/scratchpad",
+    "custom/media",
+    "custom/alsa",
+  ],
+  "modules-center": ["clock"],
+  "modules-right": ["cpu", "memory", "backlight", "battery", "battery#bat2"],
+  "clock": {
+    "format": "{:%d-%m-%Y %H:%M}",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+  },
+
+  "hyprland/window": {
+    "format": "👉 {}",
+    "rewrite": {
+      "(.*) — Mozilla Firefox": "🌎 $1",
+      "(.*) - fish": "> [$1]",
+    },
+    "separate-outputs": true,
+  },
+  "sway/scratchpad": {
+    "format": "{icon} {count}",
+    "show-empty": false,
+    "format-icons": ["", ""],
+    "tooltip": true,
+    "tooltip-format": "{app}: {title}",
+  },
+  "custom/alsa": {
+    "exec": "~/.config/waybar/custom_modules/alsa.sh",
+    "interval": 1,
+    "format": "{}",
+    "tooltip": false,
+  },
+  "cpu": {
+    "format": "{usage}% ",
+    "tooltip": false,
+  },
+  "memory": {
+    "format": "{}% ",
+  },
+  "backlight": {
+    // "device": "acpi_video1",
+    "format": "{percent}% {icon}",
+    "format-icons": ["", "", "", "", "", "", "", "", ""],
+  },
+  "battery": {
+    "states": {
+      // "good": 95,
+      "warning": 30,
+      "critical": 15,
+    },
+    "format": "{capacity}% {icon}",
+    "format-full": "{capacity}% {icon}",
+    "format-charging": "{capacity}% ",
+    "format-plugged": "{capacity}% ",
+    "format-alt": "{time} {icon}",
+    // "format-good": "", // An empty format will hide the module
+    // "format-full": "",
+    "format-icons": ["", "", "", "", ""],
+  },
+  "battery#bat2": {
+    "bat": "BAT2",
+  },
+}
